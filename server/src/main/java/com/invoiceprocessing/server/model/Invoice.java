@@ -12,17 +12,17 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.AUTO) // to auto generate random value in id.
     private long id;
     private String  vendor;
-    private String  produck;
+    private String  product;
     private int amount;
     private String date;
     private String action;
 
     public Invoice() {}
 
-    public Invoice(long id, String vendor, String produck, int amount, String date, String action) {
+    public Invoice(long id, String vendor, String product, int amount, String date, String action) {
         this.id = id;
         this.vendor = vendor;
-        this.produck = produck;
+        this.product = product;
         this.amount = amount;
         this.date = date;
         this.action = action;
@@ -44,12 +44,12 @@ public class Invoice {
         this.vendor = vendor;
     }
 
-    public String getProduck() {
-        return produck;
+    public String getProduct() {
+        return product;
     }
 
-    public void setProduck(String produck) {
-        this.produck = produck;
+    public void setProduct(String product){
+        this.product = product;
     }
 
     public int getAmount() {

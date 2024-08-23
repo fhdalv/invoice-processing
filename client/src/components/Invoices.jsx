@@ -1,10 +1,29 @@
 
-import {Table, TableHead, TableBody, TableRow, TableCell, Button} from '@mui/material';
+import {Table, TableHead, TableBody, TableRow, TableCell, Button, styled, Typography} from '@mui/material';
 
-const Invoices = ({ invoices }) => {
+const StyledTable = styled(Table)({
+    width: '80%',
+    margin: 20,
+    marginTop: 40,
+    '& > thead > tr > th': {
+        background: '#000',
+        color: '#FFFFFF',
+        fontSize: 18
+    },
+    '& > tbody > tr > td': {
+        fontSize: 16
+    },
+    '& > tbody > p': {
+        fontSize: 18,
+        marginTop: 15
+    }
+
+})
+
+const Invoices = ({ invoices, removeInvoice }) => {
 
     return (
-        <Table>
+        <StyledTable>
             <TableHead>
                 <TableRow>
                     <TableCell>Vendor</TableCell>
@@ -17,6 +36,7 @@ const Invoices = ({ invoices }) => {
             </TableHead>
             <TableBody>
                 {
+                    invoices && Array.isArray(invoices) && invoices.length > 0 ?
                     invoices.map(invoice => (
                         <TableRow>
                             <TableCell>{invoice.vendor}</TableCell>
@@ -25,13 +45,19 @@ const Invoices = ({ invoices }) => {
                             <TableCell>{invoice.date}</TableCell>
                             <TableCell>{invoice.action}</TableCell>
                             <TableCell>
-                                <Button variant="contained" color="success">Mark Done</Button>
+                                <Button variant="contained" color="success"
+                                onClick={() => removeInvoice(invoice.id)}
+                                
+                                
+                                >Mark Done</Button>
                             </TableCell>
                         </TableRow>
                     ))
+                    :
+                    <Typography>No Pending Invoices</Typography>
                 }
             </TableBody>
-        </Table>
+        </StyledTable>
     )
 }
 

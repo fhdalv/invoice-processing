@@ -23,5 +23,10 @@ public class InvoiceController {
     public List<Invoice> getInvoives() {
         return this.invoiceService.getInvoices();
     }
+
+    @DeleteMapping("/invoice/{invoiceId}")
+    public Invoice deleteInvoice(@PathVariable String invoiceId){
+        return this.invoiceService.deleteInvoice(Long.parseLong(invoiceId));
+    }
 }
 

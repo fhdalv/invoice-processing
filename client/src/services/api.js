@@ -19,3 +19,13 @@ export const getAllInvoice = async () => {
     return error.response.data;
   }
 }
+
+
+export const deleteInvoice = async (id) => {
+  try {
+    return await axios.delete(`${API_URL}/invoice/${id}`);
+  } catch (error) {
+      console.log('Error: ', error.message);
+      return error.response.data;
+  }
+}
